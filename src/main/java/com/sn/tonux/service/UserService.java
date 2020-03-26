@@ -8,8 +8,6 @@ import java.util.Optional;
 
 public interface UserService {
 
-
-
     public void createUser(List<User> emp);
 
 
@@ -19,7 +17,13 @@ public interface UserService {
     public Optional<User> findUserById(int id);
 
 
+	public Optional<User> findUserByName(String name);
+
+
     public void deleteUserById(int id);
+
+    
+	public void deleteUserByName(String name);
 
 
     public void updateUser(User user);

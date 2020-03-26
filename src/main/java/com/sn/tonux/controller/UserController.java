@@ -65,11 +65,23 @@ public class UserController {
      * @return
      */
     @GetMapping("/{id}")
-    public Optional<User> getById(@PathVariable(value= "user-id") int id) {
+    public Optional<User> getById(@PathVariable(value= "id") int id) {
         logger.debug("Getting users with user-id= {}.", id);
         return serv.findUserById(id);
     }
-
+    
+    /**
+     * Method to fetch user by name.
+     * @param name
+     * @return
+     */
+    @GetMapping("named/{name}")
+    @ResponseStatus(HttpStatus.OK)
+    public Optional<User> getByName(@PathVariable(value= "name") String name) {
+        logger.debug("Fetching user with user-name= {}.", name);
+        return serv.findUserByName(name);
+    }
+    
     /**
      * Method to update user by id.
      * @param id
@@ -96,6 +108,19 @@ public class UserController {
         logger.debug("Deleting user with user-id= {}.", id);
         serv.deleteUserById(id);
         return "user record for user-id= " + id + " deleted.";
+    }
+
+    /**
+     * Method to delete user by name.
+     * @param name
+     * @return
+     */
+    @DeleteMapping("/{name}")
+    @ResponseStatus(HttpStatus.OK)
+    public String deleteByName(@PathVariable(value= "name") String name) {
+        logger.debug("Deleting user with user-name= {}.", name);
+        serv.deleteUserByName(name);
+        return "user record for user-name= \"" + name + "\" deleted.";
     }
 
     /**

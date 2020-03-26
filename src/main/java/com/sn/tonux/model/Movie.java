@@ -1,5 +1,7 @@
 package com.sn.tonux.model;
 
+import java.math.BigInteger;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -7,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Movie {
 
     @Id
-    private int id;
+    private BigInteger id;
     private String title;
     private String genres;
     
@@ -16,10 +18,10 @@ public class Movie {
 		return "User [id=" + id + ", title=" + title + ", genres=" + genres + "]";
 	}
     
-	public int getId() {
+	public BigInteger getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 	public String getTitle() {
